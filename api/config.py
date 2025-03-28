@@ -7,5 +7,5 @@ class Settings(BaseSettings):
     aws_bucket_url: str = "https://galleryai.s3.amazonaws.com/"
     aws_region: str = "us-east-1"
     model_config = SettingsConfigDict(env_file=".env")
-    aws_access_key_id: str = ""
-    aws_secret_access_key: str = ""
+    access_key_id: str = ""
+    secret_access_key: str = ""

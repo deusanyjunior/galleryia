@@ -13,7 +13,7 @@ def get_bucket_url():
 
 def get_from_s3():
     settings = get_settings()
-    s3 = boto3.client('s3', aws_access_key_id=settings.aws_access_key_id, aws_secret_access_key=settings.aws_secret_access_key)
+    s3 = boto3.client('s3', aws_access_key_id=settings.access_key_id, aws_secret_access_key=settings.secret_access_key)
     bucket_name = settings.aws_bucket_name
 
     try:
@@ -29,7 +29,7 @@ def get_from_s3():
 
 def upload_to_s3(file):
     settings = get_settings()
-    s3 = boto3.client('s3', aws_access_key_id=settings.aws_access_key_id, aws_secret_access_key=settings.aws_secret_access_key, region_name=settings.aws_region)
+    s3 = boto3.client('s3', aws_access_key_id=settings.access_key_id, aws_secret_access_key=settings.secret_access_key, region_name=settings.aws_region)
     bucket_name = settings.aws_bucket_name
     try:
         s3.upload_fileobj(file.file, bucket_name, file.filename)
@@ -41,7 +41,7 @@ def upload_to_s3(file):
     
 def create_tagset(photo):
     settings = get_settings()
-    rekognition = boto3.client('rekognition', aws_access_key_id=settings.aws_access_key_id, aws_secret_access_key=settings.aws_secret_access_key, region_name=settings.aws_region)
+    rekognition = boto3.client('rekognition', aws_access_key_id=settings.access_key_id, aws_secret_access_key=settings.secret_access_key, region_name=settings.aws_region)
     bucket_name = settings.aws_bucket_name
     response = rekognition.detect_labels(
         Image={
