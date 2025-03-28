@@ -4,3 +4,4 @@ boto3
 pydantic
 botocore
 python-multipart
+pydantic-settings
