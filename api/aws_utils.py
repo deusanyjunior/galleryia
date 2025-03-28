@@ -66,7 +66,7 @@ def save_to_dynamodb(id, data):
 
 def get_all_from_dynamodb():
     settings = get_settings()
-    dynamodb = boto3.resource('dynamodb', region_name=settings.aws_region)
+    dynamodb = boto3.resource('dynamodb', aws_access_key_id=settings.aws_access_key_id, aws_secret_access_key=settings.aws_secret_access_key, region_name=settings.aws_region)
     table = dynamodb.Table(settings.aws_dynamodb_table)
     response = table.scan()
     items = response['Items']    
